@@ -1,4 +1,6 @@
 using BookWork.Data;
+using BookWork.Services;
+using BookWork.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +11,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // Register DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 builder.Services.AddControllersWithViews();
 

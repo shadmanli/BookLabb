@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Desktop\\BookWork\\BookWork.csproj": {}
+    "C:\\Users\\ASUS\\Desktop\\Boookk\\BookLabb\\BookWork.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Desktop\\BookWork\\BookWork.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\Boookk\\BookLabb\\BookWork.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\BookWork\\BookWork.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Boookk\\BookLabb\\BookWork.csproj",
         "projectName": "BookWork",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\BookWork\\BookWork.csproj",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\Boookk\\BookLabb\\BookWork.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\BookWork\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\Boookk\\BookLabb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

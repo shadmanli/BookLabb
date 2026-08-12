@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Brand>
+﻿@model HomeVM
 
 <section id="billboard">
 
@@ -11,39 +11,28 @@
 				</button>
 
 				<div class="main-slider pattern-overlay">
-					<div class="slider-item">
-						<div class="banner-content">
-							<h2 class="banner-title">Life of the Wild</h2>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
-								ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
-								urna, a eu.
-							</p>
-							<div class="btn-wrap">
-								<a href="#" class="btn btn-outline-accent btn-accent-arrow">
-									Read More<i class="icon icon-ns-arrow-right"></i>
-								</a>
-							</div>
-						</div><!--banner-content-->
-						<img src="images/main-banner1.jpg" alt="banner" class="banner-image">
-					</div><!--slider-item-->
 
-					<div class="slider-item">
-						<div class="banner-content">
-							<h2 class="banner-title">Birds gonna be Happy</h2>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero
-								ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis
-								urna, a eu.
-							</p>
-							<div class="btn-wrap">
-								<a href="#" class="btn btn-outline-accent btn-accent-arrow">
-									Read More<i class="icon icon-ns-arrow-right"></i>
-								</a>
-							</div>
-						</div><!--banner-content-->
-						<img src="images/main-banner2.jpg" alt="banner" class="banner-image">
-					</div><!--slider-item-->
+					@foreach(var item in Model.Books.OrderByDescending(m => m.Id).Take(3))
+					{
+						<div class="slider-item">
+							<div class="banner-content">
+								<h2 class="banner-title">@item.Name</h2>
+								<p>
+									@item.Description
+								</p>
+								<div class="btn-wrap">
+									<a href="#" class="btn btn-outline-accent btn-accent-arrow">
+										Read More<i class="icon icon-ns-arrow-right"></i>
+									</a>
+								</div>
+							</div><!--banner-content-->
+							<img src="images/@item.MainImage" alt="banner" class="banner-image">
+						</div>
+					
+						<!--slider-item-->
+					}
+			
+
 
 				</div><!--slider-->
 
@@ -63,7 +52,7 @@
 			<div class="inner-content">
 				<div class="logo-wrap">
 					<div class="grid">
-					@foreach(var item in Model)
+					@foreach(var item in Model.Brands)
 						{
 							<a href="#"><img src="images/@item.Image" alt="client"></a>
 						}
@@ -89,74 +78,34 @@
 
 				<div class="product-list" data-aos="fade-up">
 					<div class="row">
-
-						<div class="col-md-3">
-							<div class="product-item">
-								<figure class="product-style">
-									<img src="images/product-item1.jpg" alt="Books" class="product-item">
-									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-										Add to
-										Cart
-									</button>
-								</figure>
-								<figcaption>
-									<h3>Simple way of piece life</h3>
-									<span>Armor Ramsey</span>
-									<div class="item-price">$ 40.00</div>
-								</figcaption>
+                        @{
+							var featuredBooks = Model.Books.Where(m => m.IsFeatured).Take(3).ToList();
+							if (!featuredBooks.Any())
+							{
+								featuredBooks = Model.Books.Take(3).ToList();
+							}
+						}
+						@foreach(var item in featuredBooks)
+						{
+							<div class="col-md-3">
+								<div class="product-item">
+									<figure class="product-style">
+										<img src="images/@item.MainImage" alt="Books" class="product-item">
+										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+											Add to
+											Cart
+										</button>
+									</figure>
+									<figcaption>
+										<h3>@item.Name</h3>
+										<span>Armor Ramsey</span>
+										<div class="item-price">@item.Price</div>
+									</figcaption>
+								</div>
 							</div>
-						</div>
+						}
+					
 
-						<div class="col-md-3">
-							<div class="product-item">
-								<figure class="product-style">
-									<img src="images/product-item2.jpg" alt="Books" class="product-item">
-									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-										Add to
-										Cart
-									</button>
-								</figure>
-								<figcaption>
-									<h3>Great travel at desert</h3>
-									<span>Sanchit Howdy</span>
-									<div class="item-price">$ 38.00</div>
-								</figcaption>
-							</div>
-						</div>
-
-						<div class="col-md-3">
-							<div class="product-item">
-								<figure class="product-style">
-									<img src="images/product-item3.jpg" alt="Books" class="product-item">
-									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-										Add to
-										Cart
-									</button>
-								</figure>
-								<figcaption>
-									<h3>The lady beauty Scarlett</h3>
-									<span>Arthur Doyle</span>
-									<div class="item-price">$ 45.00</div>
-								</figcaption>
-							</div>
-						</div>
-
-						<div class="col-md-3">
-							<div class="product-item">
-								<figure class="product-style">
-									<img src="images/product-item4.jpg" alt="Books" class="product-item">
-									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-										Add to
-										Cart
-									</button>
-								</figure>
-								<figcaption>
-									<h3>Once upon a time</h3>
-									<span>Klien Marry</span>
-									<div class="item-price">$ 35.00</div>
-								</figcaption>
-							</div>
-						</div>
 
 					</div><!--ft-books-slider-->
 				</div><!--grid-->

@@ -1,12 +1,14 @@
 ﻿using BookWork.Models;
+using BookWork.ViewModels.Book;
+using BookWork.ViewModels.Brand;
 
 namespace BookWork.ViewModels.Home
 {
     public class HomeVM
     {
-        public IEnumerable<Brand> Brands { get; set; }
+        public IEnumerable<BrandUIVM> Brands { get; set; }
         
-        public IEnumerable<Book> Books { get; set; }
+        public IEnumerable<BookUIVM> Books { get; set; }
 
 
     }
